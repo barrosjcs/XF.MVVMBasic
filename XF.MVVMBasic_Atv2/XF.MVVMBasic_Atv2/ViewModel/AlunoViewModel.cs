@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XF.MVVMBasic.Model;
@@ -14,13 +8,12 @@ using XF.MVVMBasic_Atv2;
 
 namespace XF.MVVMBasic.ViewModel
 {
-    public class AlunoViewModel //: INotifyPropertyChanged
+    public class AlunoViewModel
     {
         #region Propriedades
         public Aluno AlunoModel { get; set; }
         public ObservableCollection<Aluno> Alunos { get; set; }
         
-        // UI Events
         public OnAddAluno OnAddAluno { get; }
         public OnExcludeAluno OnExcludeAluno { get; }
         public ICommand OnNewCommand { get; private set; }
@@ -74,15 +67,6 @@ namespace XF.MVVMBasic.ViewModel
                 await Application.Current.MainPage.DisplayAlert("Erro", ex.Message, "OK");
             }
         }
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //private void EventPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    if (this.PropertyChanged != null)
-        //    {
-        //        this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        //    }
-        //}
 
         private async void OnOut() => await Application.Current.MainPage.Navigation.PopAsync();
 
